@@ -2,7 +2,7 @@
 //   Solution 4 – Interfaces
 // ⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈⏈
 
-// Objectives: 
+// Objectives:
 // • Demonstrate structural typing (duck typing)
 // • Create an interface and implement it on a class
 // • Differentiate type aliases from interfaces
@@ -20,10 +20,10 @@ export default () => {
   }
 
   function addToCart(item: CartItem) {
-    console.log('[Solution 4.1]', `Adding "${item.title}" to cart`);
+    console.log("[Solution 4.1]", `Adding "${item.title}" to cart`);
   }
 
-  addToCart({ id: 1, title: 'Concrete shoes' })
+  addToCart({ id: 1, title: "Concrete shoes" });
 
   // ======== Solution 4.2 ========
   // Instructions:
@@ -39,9 +39,9 @@ export default () => {
     constructor(public name: string, public age: number) {}
   }
 
-  const jane = new Person('Jane', 31);
+  const jane = new Person("Jane", 31);
 
-  console.log('[Solution 4.2]', `${jane.name} is ${jane.age} years old.`);
+  console.log("[Solution 4.2]", `${jane.name} is ${jane.age} years old.`);
 
   // ======== Solution 4.3 ========
   // Instructions:
@@ -70,7 +70,7 @@ export default () => {
       latitude: 42.332,
       longitude: -73.324,
     },
-    name: 'Montréal',
+    name: "Montréal",
   };
 
   const tampa = {
@@ -78,34 +78,39 @@ export default () => {
       latitude: 27.9478,
       longitude: -82.4584,
     },
-    name: 'Tampa',
+    name: "Tampa",
   };
 
   function getCityInfo(city: City) {
-    const coords = `(${city.coords.latitude.toFixed(3)}, ${city.coords.longitude.toFixed(3)})`;
+    const coords = `(${city.coords.latitude.toFixed(
+      3
+    )}, ${city.coords.longitude.toFixed(3)})`;
     return `${city.name.toUpperCase()} is located at ${coords}.`;
   }
 
-  console.log('[Solution 4.3]', `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`);
-}
+  console.log(
+    "[Solution 4.3]",
+    `${getCityInfo(montreal)} \n\n ${getCityInfo(tampa)}`
+  );
+};
 
 // ======== Exercise 4.4 ========
 // The purpose of this exercise is simply to illustrate a use of `readonly`
 
 interface UserSchema {
-  readonly id: number;
+  id: number;
   name: string;
 }
 
 class User implements UserSchema {
-  constructor(public name: string, readonly id: number) { }
+  constructor(public name: string, public id: number) {}
 }
 
-const user = new User('Dog', 1);
+const user = new User("Dog", 1);
 
 console.log(user.id); // readable
 
-user.name = 'Harold'; // writable
+user.name = "Harold"; // writable
 user.id = 5; // not writable
 
-console.log(`User:`, user)
+console.log(`User:`, user);
